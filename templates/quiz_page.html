@@ -1,0 +1,53 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quizPage</title>
+    <style>
+        .nav{
+        width:101%;
+        height:10vh;
+        padding:5px;
+        color:#109AD5;
+        text-align:center;
+        background-color:#323D47;
+    margin-left:-10px;
+    margin-right:10px;}
+        .nav h2{
+        margin-top:15px;}
+    .question_box{
+    position:relative;
+    width:70%;
+    height:100px;
+    padding:10px;
+    border:3px solid gray;
+    }
+         .question_box  hr{
+              margin: 0;
+            width: calc(100% + 20px);
+            margin-left: -10px;
+        }
+        .submit{
+        border:none;outline:none;padding:8px;font-size:20px;color:white;background-color:#02D649;border-radius:5px;width:100px;
+
+        }
+        .submit:hover{
+      background-color: #02b13c;}
+    </style>
+</head>
+<body>
+<div class="nav">
+    <h2 >Start your quiz Here</h2></div><br>
+<form action="submit_quiz" method="post" enctype="multipart/form-data" >
+    {% for question in Questions %}
+<div class="question_box">
+        <div style="color:red;font-size:20px;font-weight:400">{{question.question}}</div>
+    <hr>
+    <input type="radio" name="{{question.q_no}}" value="{{ question.option1 }}" required>{{ question.option1 }}<br>
+     <input type="radio" name="{{question.q_no}}" value="{{ question.option2 }}" required>{{ question.option2 }}<br>
+     <input type="radio" name="{{question.q_no}}" value="{{ question.option3 }}" required>{{ question.option3 }}<br>
+     <input type="radio" name="{{question.q_no}}" value="{{ question.option4 }}" required>{{ question.option4 }}<br>
+</div><br>{% endfor %}
+<input type="submit" name="submitform"  class="submit" value="submit"></form>
+</body>
+</html>
